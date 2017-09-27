@@ -25,4 +25,23 @@ class BookRepository
     {
         return $this->books;
     }
+
+    /**
+     * @param int $id
+     * @return array
+     * @throw \Exception
+     */
+    public function getReferenceBook($id = null)
+    {
+        if (is_null($id)) {
+            throw new \Exception;
+        }
+        foreach ($this->books as $book) {
+            if ($book['id'] === $id) {
+                return $book;
+            }
+        }
+        return null;
+    }
+
 }
